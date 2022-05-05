@@ -24,11 +24,11 @@ hr{
 }
 
 .img-alerta-roja{
-    margin-left: 150px;
+    margin-left: 175px;
 }
 
 .img-user-rojo{
-    margin-left: 150px;
+    margin-left: 175px;
     height: 300px;
     width: 350px;
 }
@@ -41,10 +41,22 @@ hr{
     height: 60px;
 }
 
+.resultado-busqueda-izquierda{
+    margin-left: 20px;
+}
+
+.resultado-busqueda-derecha{
+    margin-left: 0px;
+}
+
 .vineta{
     color: red;
 }
 
 .jum{
     background-color:darkgrey;
+}
+
+.nombre-columna{
+    font-size: 20px;
 }
