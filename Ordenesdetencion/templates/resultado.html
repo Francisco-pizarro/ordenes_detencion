@@ -1,13 +1,85 @@
 {% extends 'index.html' %}
-
+{% load static %}
 {% block title %} resultados {% endblock %}
 
 
 {% block contenido %}
 
-<h2>
-  resultado
-</h2>
+<!doctype html>
+<html lang="en">
+  <body>
+      
+    <div class="jumbotron jumbotron-fluid fondo-jumbotron">
+      <div class="container">
+        <h3 class="display-4 title-busqueda">Resultado de Búsqueda</h3>
+      </div>
+    </div>
+    <div class="container-fluid contenedor-superior ">
+      <div class="row">
+        <div class="col-2">
+          <img class="img-alerta-roja" src="{% static 'img/btn-rojo.png' %}">
+        </div>
+        <div class="col-10">
+          <div class="row"><p class="h4">RUT: </p></div>
+          <div class="row"><p class="h4">NOMBRE: </p></div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-4">
+          <img class="img-user-rojo" src="{% static 'img/user-rojo.png' %}">
+        </div>
+        <div class="col-8">
+          <div class="row">
+            <div class="col-5"><span class="punto-rojo">·</span>Domicilio</div>
+            <div class="col-5"><span class="punto-rojo">·</span>Nacionalidad</div>
+          </div>
+          <div class="row">
+            <div class="col-5">domicilio del consultado</div>
+            <div class="col-5">Nacionalidad del consultado</div>
+          </div>
+          <!-- Segunda Linea -->
+          <div class="row">
+            <div class="col-5"><span class="punto-rojo">·</span>Genero</div>
+            <div class="col-5"><span class="punto-rojo">·</span>Actividad</div>
+          </div>
+          <div class="row">
+            <div class="col-5">Genero del consultado</div>
+            <div class="col-5">Actividad del consultado</div>
+          </div>
+          <!-- Tercera Linea -->
+          <div class="row">
+            <div class="col-5"><span class="punto-rojo">·</span>Estado Civil</div>
+            <div class="col-5"><span class="punto-rojo">·</span>Institución</div>
+          </div>
+          <div class="row">
+            <div class="col-5">Estado Civil del consultado</div>
+            <div class="col-5">Institución del consultado</div>
+          </div>
+          <!-- Cuarta Linea -->
+          <div class="row">
+            <div class="col-5"><span class="punto-rojo">·</span>Fecha de Nacimiento</div>
+            <div class="col-5"><span class="punto-rojo"></span></div>
+          </div>
+          <div class="row">
+            <div class="col-5">Fecha de Nacimiento del consultado</div>
+            <div class="col-5"></div>
+          </div>
+        </div>
+          
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <img  class="msg-alerta" src="{% static 'img/msg-alerta.png' %}" alt="">
+        </div>
+      </div>
+
+    <link rel="stylesheet" href="/static/css/estilos.css">
+  </body>
+</html>
 
 
 {% endblock %}
