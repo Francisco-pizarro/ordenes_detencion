@@ -6,3 +6,6 @@ def index(request):
 
 def resultado(request):
     return render(request, 'resultado.html')
+
+def resultadok(request):
+    return render(request, 'resultadok.html')
