@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-  <title>Alertas</title>
+  <title>{% block title %} Alertas {% endblock %}</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -43,7 +43,7 @@
     </ul>
     
   </div>
-    
+    {% block contenido %}
     
     <div class="jumbotron">
       <div class="container ">
@@ -84,6 +84,8 @@
 </section>
 
 <br/>
+{% endblock %}
+
 
 <footer class="bg-dark">
   <p class="text-white text-center">
