@@ -1,3 +1,46 @@
+.title-busqueda{
+    font-size: 35px;
+    color: #FFF;
+    font-weight: 200;
+}
+
+.fondo-jumbotron{
+    background: #999999;
+    padding: 25px;
+}
+
+hr{
+    height: 3px;
+    width:80%;
+    background: red;
+    border-radius: 2px;
+    
+}
+
+.punto-rojo{
+    color:red;
+    font-size: 30px;
+
+}
+
+.img-alerta-roja{
+    margin-left: 150px;
+}
+
+.img-user-rojo{
+    margin-left: 150px;
+    height: 300px;
+    width: 350px;
+}
+
+.msg-alerta{
+    margin-top: 20px;
+    margin-left: 10%;
+    margin-bottom: 10px;
+    width: 80%;
+    height: 60px;
+}
+
 .vineta{
     color: red;
 }
