@@ -5,3 +5,14 @@
 .jum{
     background-color:darkgrey;
 }
+
+.card-header{
+    margin: 10px;
+    height: 100px;
+    font-size: 40px;
+    
+}
+
+.card-body{
+    height: 300px;
+}
