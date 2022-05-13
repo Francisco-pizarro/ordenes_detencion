@@ -9,14 +9,41 @@
 {% block contenido %}
 
 
-<div class="card">
-  <h5 class="card-header">Resultado Búsqueda</h5>
-  <div class="card-body">
-    
-    <p>respuesta de texto</p>
-    <a href="/" class="btn btn-primary">Go somewhere</a>
+<div class="jumbotron jumbotron-fluid fondo-jumbotron">
+  <div class="container">
+    <h3 class="display-4 title-busqueda">Resultado de Búsqueda</h3>
   </div>
 </div>
 
+<div class="jumbotron contenedor-msg">
+  <div class="container">
+    <div class="row">
+      <div class="col-2">
+        <img class="img-alerta-verde" src="{% static 'img/btn-verde.png' %}">
+      </div>
+      <div class="col-8">
+        <p class="lead font-weight-bold text-lg-left text-secondary">La persona no ha sido condenada/imputada o no presenta antecedentes judiciales en "Ordenes de Detencion"</p>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="respuesta-ok pt-0">
+<div class="container-fluid h-100"> 
+  <div class="row w-100 align-items-center">
+    <div class="col text-center">
+      <button class="btn btn-secondary btn-lg"> Volver al buscador </button>
+    </div>	
+  </div>
+</div>
+<br>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-3 mr-5">
+      <p class="lead">Tiempo de respuesta: </p>
+    </div>
+    <div class="col-9">
+    </div>
+  </div>
+</div>
 
 {% endblock %}
