@@ -25,11 +25,10 @@ class Actividad(models.Model):
 class Comuna(models.Model):
     id_comuna = models.AutoField(db_column='ID_COMUNA', primary_key=True)  # Field name made lowercase.
     gls_comuna = models.CharField(db_column='GLS_COMUNA', max_length=50)  # Field name made lowercase.
-    gls_rpovincia = models.CharField(db_column='GLS_RPOVINCIA', max_length=50)  # Field name made lowercase.
     region_id_region = models.ForeignKey('Region', models.DO_NOTHING, db_column='REGION_ID_REGION')  # Field name made lowercase.
-
     def __str__(self):
         return self.gls_comuna
+
     class Meta:
         managed = False
         db_table = 'comuna'
@@ -47,16 +46,13 @@ class Delito(models.Model):
         db_table = 'delito'
 
 
-
-
-
-
 class EstadoCivil(models.Model):
     id_estado_civil = models.AutoField(db_column='ID_ESTADO_CIVIL', primary_key=True)  # Field name made lowercase.
     gls_estado_civil = models.CharField(db_column='GLS_ESTADO_CIVIL', max_length=50)  # Field name made lowercase.
 
     def __str__(self):
         return self.gls_estado_civil
+    
     class Meta:
         managed = False
         db_table = 'estado_civil'
@@ -72,7 +68,7 @@ class MedidaCautelar(models.Model):
     tribunal_id_tribunal = models.ForeignKey('Tribunal', models.DO_NOTHING, db_column='TRIBUNAL_ID_TRIBUNAL')  # Field name made lowercase.
 
     def __str__(self):
-        return self.ruc
+        return self.resolucion
     
     class Meta:
         managed = False
@@ -125,8 +121,7 @@ class Persona(models.Model):
     sexo_id_sexo = models.ForeignKey('Sexo', models.DO_NOTHING, db_column='SEXO_ID_SEXO')  # Field name made lowercase.
 
     def __str__(self):
-        return self.gls_nombres
-    
+        return self.gls_rut
     class Meta:
         managed = False
         db_table = 'persona'
@@ -149,9 +144,9 @@ class Sexo(models.Model):
     id_sexo = models.AutoField(db_column='ID_SEXO', primary_key=True)  # Field name made lowercase.
     gls_sexo = models.CharField(db_column='GLS_SEXO', max_length=50)  # Field name made lowercase.
 
-    
     def __str__(self):
         return self.gls_sexo
+    
     class Meta:
         managed = False
         db_table = 'sexo'
