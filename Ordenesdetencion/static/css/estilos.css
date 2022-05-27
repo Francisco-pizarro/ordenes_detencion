@@ -17,6 +17,13 @@ hr{
     
 }
 
+.respuesta-ok{
+    height: 3px;
+    width:63%;
+    background: green;
+    border-radius: 2px;
+}
+
 .punto-rojo{
     color:red;
     font-size: 30px;
@@ -24,11 +31,11 @@ hr{
 }
 
 .img-alerta-roja{
-    margin-left: 150px;
+    margin-left: 175px;
 }
 
 .img-user-rojo{
-    margin-left: 150px;
+    margin-left: 175px;
     height: 300px;
     width: 350px;
 }
@@ -41,6 +48,14 @@ hr{
     height: 60px;
 }
 
+.resultado-busqueda-izquierda{
+    margin-left: 20px;
+}
+
+.resultado-busqueda-derecha{
+    margin-left: 0px;
+}
+
 .vineta{
     color: red;
 }
@@ -49,13 +64,11 @@ hr{
     background-color:darkgrey;
 }
 
-.card-header{
-    margin: 10px;
-    height: 100px;
-    font-size: 40px;
-    
+.nombre-columna{
+    font-size: 20px;
 }
 
-.card-body{
-    height: 300px;
+.contenedor-msg{
+    background: #FFF;
+    padding: 10px;
 }
