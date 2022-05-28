@@ -19,60 +19,46 @@
         <div class="col-2">
           <img class="img-alerta-roja" src="{% static 'img/btn-rojo.png' %}">
         </div>
-        <div class="col-10">
-          <div class="row">
-            <div class="col-10">
-              <p class="h4">RUT: </p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-10">
-            <p class="h4">NOMBRE: </p>
-            </div>
-          </div>
-      </div>
+       
     </div>
     <hr>
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
-        <div class="col-4">
+        <!--<div class="col-4">
           <img class="img-user-rojo" src="{% static 'img/user-rojo.png' %}">
-        </div>
+        </div>-->
         <div class="col-8">
-          <div class="row">
-            <div class="col-5 nombre-columna"><span class="punto-rojo">·</span>Domicilio</div>
-            <div class="col-5 nombre-columna"><span class="punto-rojo">·</span>Nacionalidad</div>
-          </div>
-          <div class="row">
-            <div class="col-5 resultado-busqueda-izquierda">domicilio del consultado</div>
-            <div class="col-5 resultado-busqueda">Nacionalidad del consultado</div>
-          </div>
-          <!-- Segunda Linea -->
-          <div class="row">
-            <div class="col-5 nombre-columna"><span class="punto-rojo">·</span>Genero</div>
-            <div class="col-5 nombre-columna"><span class="punto-rojo">·</span>Actividad</div>
-          </div>
-          <div class="row">
-            <div class="col-5 resultado-busqueda-izquierda">Genero del consultado</div>
-            <div class="col-5 resultado-busqueda">Actividad del consultado</div>
-          </div>
-          <!-- Tercera Linea -->
-          <div class="row">
-            <div class="col-5 nombre-columna"><span class="punto-rojo">·</span>Estado Civil</div>
-            <div class="col-5 nombre-columna"><span class="punto-rojo">·</span>Institución</div>
-          </div>
-          <div class="row">
-            <div class="col-5 resultado-busqueda-izquierda">Estado Civil del consultado</div>
-            <div class="col-5 resultado-busqueda">Institución del consultado</div>
-          </div>
-          <!-- Cuarta Linea -->
-          <div class="row">
-            <div class="col-5 nombre-columna"><span class="punto-rojo">·</span>Fecha de Nacimiento</div>
-            <div class="col-5 nombre-columna"><span class="punto-rojo"></span></div>
-          </div>
-          <div class="row">
-            <div class="col-5 resultado-busqueda-izquierda">Fecha de Nacimiento del consultado</div>
-            <div class="col-5"></div>
+          <div class="container">
+            <h2>Resultado Busqueda</h2>
+            <p>Antecedentes Personales:</p>            
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Rut</th>
+                  <th>Nombre</th>
+                  <th>Fecha Nacimiento</th>
+                  <th>Pais</th>
+                  <th>Genero</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                {% for p in persona %}
+                <tr>
+                  
+                  <td>{{ p.gls_rut }}</td>
+                  <td>{{ p.gls_nombres }} {{ p.gls_apellido_paterno }}</td>
+                  <td>{{ p.fec_fecha_nacimiento }}</td>
+                  <td>{{ p.pais_id_pais }}</td>
+                  <td>{{ p.sexo_id_sexo }}</td>
+                  
+                 
+                </tr>
+                {% endfor %}
+                
+                
+              </tbody>
+            </table>
           </div>
         </div>
         
@@ -86,40 +72,7 @@
         </div>
       </div>
 
-      <div class="col-lg-12">
-        <div class="card">
-          <div class="card-header border-bottom">
-            <p class="h6">ORDENES DE APREHENSIÓN: </p>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table text-sm mb-0 table-striped">
-                <thead>
-                  <tr>
-                    <th>Fecha</th>
-                    <th>RUN</th>
-                    <th>Delito</th>
-                    <th>Tribunal</th>
-                    <th>Ciudad</th>
-                    <th>Resolucion</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>11.111.111-1</td>
-                    <td>receptaion art. 456 bis a.</td>
-                    <td>juzgado de garantia de viña del mar</td>
-                    <td>viña del mar</td>
-                    <td></td>
-                  </tr>
-    
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
+     
 
     <link rel="stylesheet" href="/static/css/estilos.css">
   </body>

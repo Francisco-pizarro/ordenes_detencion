@@ -6,7 +6,12 @@ def index(request):
     return render(request, 'index.html')
 
 def resultado(request):
-    return render(request, 'resultado.html')
+    
+    persona = Persona.objects.all()
+    data = {
+        'persona': persona
+    }
+    return render(request, 'resultado.html', data)
 
 def resultadok(request):
     return render(request, 'resultadok.html')
