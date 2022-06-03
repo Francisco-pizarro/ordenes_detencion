@@ -11,18 +11,20 @@
       
     <div class="jumbotron jumbotron-fluid fondo-jumbotron">
       <div class="container responsive">
-        <h3 class="display-4 title-busqueda">Resultado de Búsqueda</h3>
+        <center>
+        <h3 class="display-3 title-busqueda">ORDEN(ES) DE DETENCION(ES) VIGENTE(S)</h3>
+        <img src="{% static 'img/alerta-blanca.png' %}" class="img-fluid alerta-blanca" alt="Responsive image">
+      </center>
       </div>
     </div>
     <div class="container-fluid contenedor-superior col-xs-6 col-sm-6 col-md-12">
       <div class="row">
-        <div class="col-2">
-          <img class="img-alerta-roja" src="{% static 'img/btn-rojo.png' %}">
+        <div class="col-2">          
         </div>
         <div class="col-10">
-          {% block persona %}
-          <div class="row"><p class="h4">RUT: {{ persona.gls_rut }}</p></div>
-          <div class="row"><p class="h4">NOMBRE: {{ persona.gls_nombres }}</p></div>
+          {% block persona%}
+          <div class="row"><p class="h4">RUN: {{ persona.gls_rut }}</p></div>
+          <div class="row"><p class="h4">NOMBRE: {{ persona.gls_nombres }} {{ persona.gls_apellido_paterno }} {{ persona.gls_apellido_materno }}</p></div>
           
         </div>
       </div>
@@ -30,13 +32,10 @@
     <hr>
     <div class="container">
       <div class="row">
-        <!--<div class="col-4">
-          <img class="img-user-rojo" src="{% static 'img/user-rojo.png' %}">
-        </div>-->
-        <div class="col-8">
+        <div class="col-12">
           <div class="container">
-            <h2>Resultado Busqueda</h2>
-            <p>Antecedentes Personales:</p>            
+            
+            <div class="table-responsive-sm">         
             <table class="table table-striped">
               <thead>
                 <tr>
@@ -61,10 +60,10 @@
                  
                 </tr>
                 {% endblock %}
-                
-                
+             
               </tbody>
             </table>
+          </div>  
           </div>
         </div>
         
@@ -74,7 +73,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <img  class="msg-alerta" src="{% static 'img/msg-alerta.png' %}" alt="">
+            <div class="msg-alerta p-2"><center><h2> ATENCIÓN </h2></center></div>
           </div>
         </div>
       </div>
@@ -85,7 +84,7 @@
             <p class="h6">ORDENES DE APREHENSIÓN: </p>
           </div>
           <div class="card-body">
-            <div class="table-responsive">
+            <div class="table-responsive-sm">
               <table class="table text-sm mb-0 table-striped">
                 <thead>
                   <tr>
@@ -100,7 +99,7 @@
                 {% for orden in orden %}
                 <tbody>
                   <tr>
-                    <th scope="row">1</th>
+                    <th scope="row">{{orden.id_orden}}</th>
                     <td>{{orden.fecha_orden}}</td>
                     <td>{{orden.ruc}}</td>
                     <td>{{orden.delito_id_delito}}</td>

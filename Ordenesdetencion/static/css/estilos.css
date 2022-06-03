@@ -5,7 +5,7 @@
 }
 
 .fondo-jumbotron{
-    background: #999999;
+    background: rgb(215, 42, 46);
     padding: 25px;
 }
 
@@ -41,6 +41,8 @@ hr{
 }
 
 .msg-alerta{
+    color: #FFF;
+    background:rgb(215, 42, 46);
     margin-top: 20px;
     margin-left: 10%;
     margin-bottom: 10px;
@@ -71,4 +73,9 @@ hr{
 .contenedor-msg{
     background: #FFF;
     padding: 10px;
+}
+
+.alerta-blanca{
+    height: 200px;
+    width: 200px;
 }
