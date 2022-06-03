@@ -21,16 +21,12 @@
 
 <body>
 
-
   <header>
     
     <div class="container ">
     <ul class="nav justify-content-center">
       <li class="nav-item">
-        <a class="nav-link active" ></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" ></a>
+        <a class="nav-link active"  href="./">Inicio</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" ></a>
@@ -39,7 +35,7 @@
         <a class="nav-link" >|</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link ">Cerrar Sesion</a>
+        <a class="nav-link" href="">Cerrar Sesion</a>
       </li>
     </ul>
     
@@ -51,8 +47,9 @@
         <h2>
           Bienvenido a la ficha de alerta ORD
         </h2>
-        <p class="mt-4">
-          Consulta rapida de situaciones penales y/o policiales
+        <p class="mt-3">
+          Consulta rapida de antecedentes policiales, ordenes de detencion vigentes y/o medidas cautelares.<br>
+          Ej:12345678-9
         </p>
 
         <div class="mt-4">
@@ -87,28 +84,26 @@
       <span class="vineta" >|</span>
       Tipos de alerta
     </h2>
-    
-    
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="{% static 'img/1.portada.png' %}" class="d-block w-100" alt="...">
-        </div>
-        
+
+    <div class="container">
+    <div class="row">
+    <div class="col-4 caja_semaforo fondo_gris">
+      <div class=""> <img src="{% static 'img/boton_rojo.png' %}" class="boton_alerta" ></div>
+        <h3 class="texto_rojo bold">Alerta Roja</h3>
+        <div class="current_text">Corresponde a personas con órdenes de detención vigente.</div>
+    </div>
+    <div class="col-4 caja_semaforo">
+      <div class=""><img src="{% static 'img/boton_amarillo.png' %}" class="boton_alerta" ></div>
+       <h3 class="texto_amarillo bold">Alerta Amarilla</h3>
+        <div class="current_text">Corresponde a personas con medidas cautelares vigentes.</div>
+    </div>
+    <div class="col-4 caja_semaforo fondo_gris">
+        <div class=""><img src="{% static 'img/boton_verde.png' %}" class="boton_alerta" ></div>
+        <h3 class="texto_verde bold">Alerta Verde</h3>
+        <div class="current_text">Indica que la persona consultada <strong>NO</strong> registra antecedentes en el sistema.</div>
       </div>
     </div>
-       
-    
-    
-    
-    
-    
-    
-   
-    
-    
-    
-    
+  </div>
    
 </section>
 
@@ -117,66 +112,12 @@
 
 
 <!-- Footer -->
-<footer class="bg-dark text-center text-white mt-5">
-  <!-- Grid container -->
-  <div class="container p-4">
-    <!-- Section: Social media -->
-  
-    <!-- Section: Social media -->
-
-    <!-- Section: Form -->
-    <section class="">
-      <form action="">
-        <!--Grid row-->
-        <div class="row d-flex justify-content-center">
-          <!--Grid column-->
-          <div class="col-auto">
-            <p class="pt-2">
-              <strong>Sign up for our newsletter</strong>
-            </p>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-md-5 col-12">
-            <!-- Email input -->
-            <div class="form-outline form-white mb-4">
-              <input type="email" id="form5Example21" class="form-control" />
-              <label class="form-label" for="form5Example21">Email address</label>
-            </div>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-auto">
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-outline-light mb-4">
-              Subscribe
-            </button>
-          </div>
-          <!--Grid column-->
-        </div>
-        <!--Grid row-->
-      </form>
-
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
-        repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
-        eum harum corrupti dicta, aliquam sequi voluptate quas.
-      </p>
-    </section>
-    <!-- Section: Text -->
-
-    <!-- Section: Links -->
-
-    <!-- Section: Links -->
-  </div>
-  <!-- Grid container -->
+<footer class="bg-dark text-center text-white mt-5" >
 
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    Seccion:
-    <a class="text-white" href="https://www.duoc.cl/">Gestion de Proyectos</a>
+    Grupo 3<br>
+    <a class="text-white" href="https://www.duoc.cl/">GAY0101 - GESTION AGIL DE PROYECTOS</a>
   </div>
   <!-- Copyright -->
 </footer>

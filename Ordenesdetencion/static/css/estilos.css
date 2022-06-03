@@ -62,8 +62,9 @@ hr{
     color: red;
 }
 
-.jum{
-    background-color:darkgrey;
+.jum{    
+    background-image: url(../img/fondo-01.jpg);
+    padding: 50px;
 }
 
 .nombre-columna{
@@ -79,3 +80,34 @@ hr{
     height: 200px;
     width: 200px;
 }
+
+.caja_semaforo {
+	text-align: center;
+	padding: 20px 15px;
+}
+
+.fondo_gris {
+	background-color: #f1f1f1;
+}
+
+.boton_alerta {
+	width: 85px;
+	margin-bottom: 25px;
+	margin-top: 10px;
+}
+
+.texto_rojo {
+	color: #D72A2E;
+}
+.texto_amarillo {
+	color: #FFC43B;
+}
+.texto_verde {
+	color: #1EC66D;
+}
+
+.current_text {
+	font-size: 1.1rem;
+	line-height: 2rem;
+}
+
