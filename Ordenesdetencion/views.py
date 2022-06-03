@@ -19,8 +19,3 @@ def index(request):
     else:        
         return render(request, 'index.html')
 
-
-
-def book_list(request):
-    personas = Persona.objects.order_by('rut')
-    return render('book_list.html', {'personas': personas})

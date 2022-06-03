@@ -56,19 +56,12 @@
         </p>
 
         <div class="mt-4">
-        
-        <form class="form-inline my-2 my-lg-0 ">
-          <input class=" form-control mr-sm-2" type="search" placeholder="Ingresar rut a consultar" aria-label="Search">
-          <button class="btn btn-outline-light my-2 my-sm-0" type="submit" id="btn_buscar">Buscar</button>
-        </form>
-
         {% block content %}
-				<form action="" id="busca" method="POST" enctype="multipart/form-data">
+				<form action="" id="busca" method="POST" enctype="multipart/form-data" class="form-inline my-2 my-lg-0 ">
           {% csrf_token %}
           <br>
-          <label>RUT</label>
-          <input type="text" name="txtRut" id="txtRut">
-					<button type="submit" class="btn btn-primary" id="btn_buscar2">Enviar</button>
+          <input class=" form-control mr-sm-2" type="search" placeholder="Ingresar rut a consultar" aria-label="Search" name="txtRut" id="txtRut">
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit" id="btn_buscar">Buscar</button>
 					
 				</form>
 			{% endblock %}

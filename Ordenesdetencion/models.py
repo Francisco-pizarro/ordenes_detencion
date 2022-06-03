@@ -162,6 +162,3 @@ class Tribunal(models.Model):
     class Meta:
         managed = False
         db_table = 'tribunal'
-
-class BuscaRut(models.Model):
-    rutBuscar = models.CharField(max_length=20)
