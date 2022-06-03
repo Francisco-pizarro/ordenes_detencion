@@ -3,18 +3,23 @@ from .models import Persona, Orden
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    
+    
+    if request.method == 'POST':
+        rut = request.POST.get('txtRut')
+        if rut:        
+            print('rut1:-'+rut+'-')        
+            #rut='17123213-9'
+            persona = Persona.objects.filter(gls_rut=rut)[0]
+            print('id_persona: '+str(persona.id_persona))
+            orden = Orden.objects.filter(persona_id_persona=persona.id_persona)
+            return render(request, 'resultado.html', {'persona': persona,'orden': orden})
+        else:
+            return render(request, 'index.html')            
+    else:        
+        return render(request, 'index.html')
 
-def resultado(request):
-    rut='17123213-9'
-    persona = Persona.objects.filter(gls_rut=rut)
-    orden = Orden.objects.filter(id_orden=1)
-    print([p.gls_nombres for p in persona])
-    print([o.ruc for o in orden])
-    return render(request, 'resultado.html', {'persona': persona,'orden': orden})
 
-def resultadok(request):
-    return render(request, 'resultadok.html')
 
 def book_list(request):
     personas = Persona.objects.order_by('rut')

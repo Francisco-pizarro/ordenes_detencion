@@ -49,18 +49,18 @@
                 </tr>
               </thead>
               <tbody>
-                {% for p in persona %}
+                
                 <tr>
                   
-                  <td>{{ p.gls_rut }}</td>
-                  <td>{{ p.gls_nombres }} {{ p.gls_apellido_paterno }}</td>
-                  <td>{{ p.fec_fecha_nacimiento }}</td>
-                  <td>{{ p.pais_id_pais }}</td>
-                  <td>{{ p.sexo_id_sexo }}</td>
+                  <td>{{ persona.gls_rut }}</td>
+                  <td>{{ persona.gls_nombres }} {{ persona.gls_apellido_paterno }}</td>
+                  <td>{{ persona.fec_fecha_nacimiento }}</td>
+                  <td>{{ persona.pais_id_pais }}</td>
+                  <td>{{ persona.sexo_id_sexo }}</td>
                   
                  
                 </tr>
-                {% endfor %}
+                {% endblock %}
                 
                 
               </tbody>
@@ -102,11 +102,11 @@
                 <tbody>
                   <tr>
                     <th scope="row">1</th>
-                    <td>{{ orden.fecha_orden}}</td>
-                    <td>{{ orden.ruc}}</td>
-                    <td>{{ orden.delito_id_delito}}</td>
-                    <td>{{ orden.tribunal_id_tribunal}}</td>
-                    <td>{{ orden.resolucion}}</td>
+                    <td>{{orden.fecha_orden}}</td>
+                    <td>{{orden.ruc}}</td>
+                    <td>{{orden.delito_id_delito}}</td>
+                    <td>{{orden.tribunal_id_tribunal}}</td>
+                    <td>{{orden.resolucion}}</td>
                     <td></td>
                   </tr>    
                 </tbody>
