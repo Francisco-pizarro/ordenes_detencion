@@ -9,9 +9,9 @@
 {% block contenido %}
 
 
-<div class="jumbotron jumbotron-fluid fondo-jumbotron">
+<div class="jumbotron jumbotron-fluid fondo-verde">
   <div class="container">
-    <h3 class="display-4 title-busqueda">Resultado de Búsqueda</h3>
+    <h3 class="display-4 title-busqueda-blanco">Sin Antecededentes</h3>
   </div>
 </div>
 
@@ -19,10 +19,10 @@
   <div class="container">
     <div class="row">
       <div class="col-2">
-        <img class="img-alerta-verde" src="{% static 'img/btn-verde.png' %}">
+        <img class="img-alerta-verde" src="{% static 'img/boton_verde.png' %}">
       </div>
       <div class="col-8">
-        <p class="lead font-weight-bold text-lg-left text-secondary">La persona no ha sido condenada/imputada o no presenta antecedentes judiciales en "Ordenes de Detencion"</p>
+        <p class="lead font-weight-bold text-lg-left text-secondary">La persona no ha sido condenada/imputada o no presenta antecedentes judiciales en Órdenes de Detención y/o Medidas Cautelares.</p>
       </div>
     </div>
   </div>
@@ -31,19 +31,11 @@
 <div class="container-fluid h-100"> 
   <div class="row w-100 align-items-center">
     <div class="col text-center">
-      <button class="btn btn-secondary btn-lg"> Volver al buscador </button>
+      <a class="btn btn-secondary btn-lg" href="./" role="button">Volver al buscador</a>
     </div>	
   </div>
 </div>
 <br>
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-3 mr-5">
-      <p class="lead">Tiempo de respuesta: </p>
-    </div>
-    <div class="col-9">
-    </div>
-  </div>
-</div>
+
 
 {% endblock %}

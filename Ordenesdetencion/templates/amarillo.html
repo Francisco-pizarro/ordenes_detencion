@@ -9,10 +9,10 @@
 <html lang="en">
   <body>
       
-    <div class="jumbotron jumbotron-fluid fondo-rojo">
+    <div class="jumbotron jumbotron-fluid fondo-amarillo">
       <div class="container responsive">
         <center>
-        <h3 class="display-3 title-busqueda-blanco">ÓRDENES DE DETENCIONES VIGENTES</h3>
+        <h3 class="display-3 title-busqueda">MEDIDAS CAUTELARES VIGENTES</h3>
         <img src="{% static 'img/alerta-blanca.png' %}" class="img-fluid alerta-blanca">
       </center>
       </div>
@@ -22,14 +22,14 @@
         <div class="col-2">          
         </div>
         <div class="col-10">
-          {% block persona %}
+          {% block persona%}
           <div class="row"><p class="h4">RUN: {{ persona.gls_rut }}</p></div>
           <div class="row"><p class="h4">NOMBRE: {{ persona.gls_nombres }} {{ persona.gls_apellido_paterno }} {{ persona.gls_apellido_materno }}</p></div>
           
         </div>
       </div>
     </div>
-    <hr>
+    <hr class="hr-amarillo">
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -74,7 +74,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <div class="msg-alerta p-2"><center><h2> ATENCIÓN </h2></center></div>
+            <div class="msg-alerta-amarilla p-2"><center><h2> ATENCIÓN </h2></center></div>
           </div>
         </div>
       </div>
@@ -82,7 +82,7 @@
       <div class="col-lg-12">
         <div class="card">
           <div class="card-header border-bottom">
-            <p class="h6">ORDENES DE APREHENSIÓN: </p>
+            <p class="h6">Medidas Cautelares: </p>
           </div>
           <div class="card-body">
             <div class="table-responsive-sm">
@@ -92,20 +92,20 @@
                     <th>N°</th>
                     <th>Fecha</th>
                     <th>RUC</th>
-                    <th>Delito</th>
+                    <th>Medida Cautelar</th>
                     <th>Tribunal</th>
                     <th>Resolucion</th>
                   </tr>
                 </thead>
-                {% for orden in orden %}
+                {% for cautelar in cautelar %}
                 <tbody>
                   <tr>
-                    <th scope="row">{{orden.id_orden}}</th>
-                    <td>{{orden.fecha_orden}}</td>
-                    <td>{{orden.ruc}}</td>
-                    <td>{{orden.delito_id_delito}}</td>
-                    <td>{{orden.tribunal_id_tribunal}}</td>
-                    <td>{{orden.resolucion}}</td>
+                    <th scope="row">{{cautelar.id_medida_cautelar}}</th>
+                    <td>{{cautelar.fecha}}</td>
+                    <td>{{cautelar.ruc}}</td>
+                    <td>{{cautelar.gls_medida_cautelar}}</td>
+                    <td>{{cautelar.tribunal_id_tribunal}}</td>
+                    <td>{{cautelar.resolucion}}</td>
                     <td></td>
                   </tr>    
                 </tbody>
