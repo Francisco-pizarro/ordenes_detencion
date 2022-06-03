@@ -20,8 +20,10 @@
           <img class="img-alerta-roja" src="{% static 'img/btn-rojo.png' %}">
         </div>
         <div class="col-10">
-          <div class="row"><p class="h4">RUT: </p></div>
-          <div class="row"><p class="h4">NOMBRE: </p></div>
+          {% for persona in persona %}
+          <div class="row"><p class="h4">RUT: {{ persona.gls_rut }}</p></div>
+          <div class="row"><p class="h4">NOMBRE: {{ persona.gls_nombres }}</p></div>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -71,9 +73,47 @@
           
         </div>
       </div>
+
       <div class="container-fluid">
         <div class="row">
           <img  class="msg-alerta" src="{% static 'img/msg-alerta.png' %}" alt="">
+        </div>
+      </div>
+
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header border-bottom">
+            <p class="h6">ORDENES DE APREHENSIÓN: </p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table text-sm mb-0 table-striped">
+                <thead>
+                  <tr>
+                    <th>N°</th>
+                    <th>Fecha</th>
+                    <th>RUC</th>
+                    <th>Delito</th>
+                    <th>Tribunal</th>
+                    <th>Resolucion</th>
+                  </tr>
+                </thead>
+                {% for orden in orden %}
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>{{ orden.fecha_orden}}</td>
+                    <td>{{ orden.ruc}}</td>
+                    <td>{{ orden.delito_id_delito}}</td>
+                    <td>{{ orden.tribunal_id_tribunal}}</td>
+                    <td>{{ orden.resolucion}}</td>
+                    <td></td>
+                  </tr>    
+                </tbody>
+                {% endfor %}
+              </table>
+            </div>
+          </div>
         </div>
       </div>
 

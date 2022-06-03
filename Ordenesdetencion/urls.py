@@ -1,8 +1,9 @@
-from django.urls import path, include
-from.views import index,resultado,resultadok
+from django.urls import path
+from .import views
+
 urlpatterns = [
-    path('', index, name= 'inicio'),
-    path('resultado/', resultado, name= 'resultado'),
-    path('resultadok/', resultadok, name= 'resultadok'),
+    path('', views.index),
+    path('rojo', views.resultado),
+    path('verde', views.resultadok),
     
 ] 

@@ -120,8 +120,7 @@ class Persona(models.Model):
     estado_civil_id_estado_civil = models.ForeignKey(EstadoCivil, models.DO_NOTHING, db_column='ESTADO_CIVIL_ID_ESTADO_CIVIL')  # Field name made lowercase.
     sexo_id_sexo = models.ForeignKey('Sexo', models.DO_NOTHING, db_column='SEXO_ID_SEXO')  # Field name made lowercase.
 
-    def __str__(self):
-        return self.gls_rut
+    
     class Meta:
         managed = False
         db_table = 'persona'
@@ -163,3 +162,6 @@ class Tribunal(models.Model):
     class Meta:
         managed = False
         db_table = 'tribunal'
+
+class BuscaRut(models.Model):
+    rutBuscar = models.CharField(max_length=20)

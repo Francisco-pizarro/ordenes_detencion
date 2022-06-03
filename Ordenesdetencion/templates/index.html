@@ -27,13 +27,13 @@
     <div class="container ">
     <ul class="nav justify-content-center">
       <li class="nav-item">
-        <a class="nav-link active" >Manual Ficha</a>
+        <a class="nav-link active" ></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" >Ficha Operativa</a>
+        <a class="nav-link" ></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" >Buscar</a>
+        <a class="nav-link" ></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" >|</a>
@@ -59,8 +59,19 @@
         
         <form class="form-inline my-2 my-lg-0 ">
           <input class=" form-control mr-sm-2" type="search" placeholder="Ingresar rut a consultar" aria-label="Search">
-          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Buscar</button>
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit" id="btn_buscar">Buscar</button>
         </form>
+
+        {% block content %}
+				<form method="POST">
+					
+					{% csrf_token %}
+					{{ formulario.as_table }}
+					<button type="submit" class="btn btn-primary" id="btn_buscar2">Enviar</button>
+					
+				</form>
+			{% endblock %}
+		
       </div>
       </div>
     </div>
@@ -75,8 +86,7 @@
     </h2>
 
     <P>
-      Es un sistemma de consulta operativa de la base unificada de datos, donde podrás ingresar un rut y obtener  de forma instantánea alertas sobre
-      la situación policial y/o penal de la persona consultada.
+      Es un sistemma de consulta en linea, que permite ingresar un RUN para obtener de forma instantánea alertas sobre antecedentes policiales, medidas cautelares y/o órdenes de detención vigentes.
     </P>
 
     <h2>
@@ -90,10 +100,7 @@
         <div class="carousel-item active">
           <img src="{% static 'img/1.portada.png' %}" class="d-block w-100" alt="...">
         </div>
-<<<<<<< HEAD
-=======
         
->>>>>>> 1af24da8fe37e302ff8cf6350e2bd7ad4378f875
       </div>
     </div>
        
