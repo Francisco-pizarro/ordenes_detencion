@@ -10,11 +10,11 @@
   <body>
       
     <div class="jumbotron jumbotron-fluid fondo-jumbotron">
-      <div class="container">
+      <div class="container responsive">
         <h3 class="display-4 title-busqueda">Resultado de Búsqueda</h3>
       </div>
     </div>
-    <div class="container-fluid contenedor-superior ">
+    <div class="container-fluid contenedor-superior col-xs-6 col-sm-6 col-md-12">
       <div class="row">
         <div class="col-2">
           <img class="img-alerta-roja" src="{% static 'img/btn-rojo.png' %}">
@@ -28,55 +28,54 @@
       </div>
     </div>
     <hr>
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
-        <div class="col-4">
+        <!--<div class="col-4">
           <img class="img-user-rojo" src="{% static 'img/user-rojo.png' %}">
-        </div>
+        </div>-->
         <div class="col-8">
-          <div class="row">
-            <div class="col-5 nombre-columna"><span class="punto-rojo">·</span>Domicilio</div>
-            <div class="col-5 nombre-columna"><span class="punto-rojo">·</span>Nacionalidad</div>
-          </div>
-          <div class="row">
-            <div class="col-5 resultado-busqueda-izquierda">domicilio del consultado</div>
-            <div class="col-5 resultado-busqueda">Nacionalidad del consultado</div>
-          </div>
-          <!-- Segunda Linea -->
-          <div class="row">
-            <div class="col-5 nombre-columna"><span class="punto-rojo">·</span>Genero</div>
-            <div class="col-5 nombre-columna"><span class="punto-rojo">·</span>Actividad</div>
-          </div>
-          <div class="row">
-            <div class="col-5 resultado-busqueda-izquierda">Genero del consultado</div>
-            <div class="col-5 resultado-busqueda">Actividad del consultado</div>
-          </div>
-          <!-- Tercera Linea -->
-          <div class="row">
-            <div class="col-5 nombre-columna"><span class="punto-rojo">·</span>Estado Civil</div>
-            <div class="col-5 nombre-columna"><span class="punto-rojo">·</span>Institución</div>
-          </div>
-          <div class="row">
-            <div class="col-5 resultado-busqueda-izquierda">Estado Civil del consultado</div>
-            <div class="col-5 resultado-busqueda">Institución del consultado</div>
-          </div>
-          <!-- Cuarta Linea -->
-          <div class="row">
-            <div class="col-5 nombre-columna"><span class="punto-rojo">·</span>Fecha de Nacimiento</div>
-            <div class="col-5 nombre-columna"><span class="punto-rojo"></span></div>
-          </div>
-          <div class="row">
-            <div class="col-5 resultado-busqueda-izquierda">Fecha de Nacimiento del consultado</div>
-            <div class="col-5"></div>
+          <div class="container">
+            <h2>Resultado Busqueda</h2>
+            <p>Antecedentes Personales:</p>            
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Rut</th>
+                  <th>Nombre</th>
+                  <th>Fecha Nacimiento</th>
+                  <th>Pais</th>
+                  <th>Genero</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                {% for p in persona %}
+                <tr>
+                  
+                  <td>{{ p.gls_rut }}</td>
+                  <td>{{ p.gls_nombres }} {{ p.gls_apellido_paterno }}</td>
+                  <td>{{ p.fec_fecha_nacimiento }}</td>
+                  <td>{{ p.pais_id_pais }}</td>
+                  <td>{{ p.sexo_id_sexo }}</td>
+                  
+                 
+                </tr>
+                {% endfor %}
+                
+                
+              </tbody>
+            </table>
           </div>
         </div>
-          
+        
         </div>
       </div>
 
       <div class="container-fluid">
         <div class="row">
-          <img  class="msg-alerta" src="{% static 'img/msg-alerta.png' %}" alt="">
+          <div class="col-12">
+            <img  class="msg-alerta" src="{% static 'img/msg-alerta.png' %}" alt="">
+          </div>
         </div>
       </div>
 

@@ -15,3 +15,7 @@ def resultado(request):
 
 def resultadok(request):
     return render(request, 'resultadok.html')
+
+def book_list(request):
+    personas = Persona.objects.order_by('rut')
+    return render('book_list.html', {'personas': personas})
