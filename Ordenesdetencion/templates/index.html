@@ -63,10 +63,11 @@
         </form>
 
         {% block content %}
-				<form method="POST">
-					
-					{% csrf_token %}
-					{{ formulario.as_table }}
+				<form action="" id="busca" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <br>
+          <label>RUT</label>
+          <input type="text" name="txtRut" id="txtRut">
 					<button type="submit" class="btn btn-primary" id="btn_buscar2">Enviar</button>
 					
 				</form>

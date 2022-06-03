@@ -109,7 +109,7 @@ class Persona(models.Model):
     gls_rut = models.CharField(db_column='GLS_RUT', max_length=50)  # Field name made lowercase.
     gls_apellido_paterno = models.CharField(db_column='GLS_APELLIDO_PATERNO', max_length=50)  # Field name made lowercase.
     gls_apellido_materno = models.CharField(db_column='GLS_APELLIDO_MATERNO', max_length=50)  # Field name made lowercase.
-    gls_nombres = models.CharField(db_column='GLS_NOMBRES', max_length=50)  # Field name made lowercase.
+    gls_nombres = models.CharField(max_length=50)  # Field name made lowercase.
     fec_fecha_nacimiento = models.DateField(db_column='FEC_FECHA_NACIMIENTO')  # Field name made lowercase.
     gls_depto = models.CharField(db_column='GLS_DEPTO', max_length=50, blank=True, null=True)  # Field name made lowercase.
     gls_calle = models.CharField(db_column='GLS_CALLE', max_length=50, blank=True, null=True)  # Field name made lowercase.
