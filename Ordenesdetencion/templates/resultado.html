@@ -22,10 +22,10 @@
         <div class="col-2">          
         </div>
         <div class="col-10">
-          {% for persona in persona %}
+          {% block persona%}
           <div class="row"><p class="h4">RUN: {{ persona.gls_rut }}</p></div>
           <div class="row"><p class="h4">NOMBRE: {{ persona.gls_nombres }} {{ persona.gls_apellido_paterno }} {{ persona.gls_apellido_materno }}</p></div>
-          {% endfor %}
+          
         </div>
       </div>
     </div>
@@ -35,7 +35,6 @@
         <div class="col-12">
           <div class="container">
             
-            <p>Antecedentes Personales:</p> 
             <div class="table-responsive-sm">         
             <table class="table table-striped">
               <thead>
@@ -61,8 +60,7 @@
                  
                 </tr>
                 {% endblock %}
-                
-                
+             
               </tbody>
             </table>
           </div>  
