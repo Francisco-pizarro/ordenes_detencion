@@ -3,8 +3,6 @@ from .models import Persona, Orden, MedidaCautelar
 
 # Create your views here.
 def index(request):
-    
-    
     if request.method == 'POST':
         rut = request.POST.get('txtRut')
         if rut:      
