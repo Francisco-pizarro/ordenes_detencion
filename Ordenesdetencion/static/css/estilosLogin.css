@@ -1,0 +1,119 @@
+body{
+    font-family: var(--bs-body-font-family);
+ }
+ 
+ .containerOwnApp {
+     box-shadow: 0 0 27px 0 rgba(4, 99, 17, 0.99);
+     padding-top: 10px;
+  }
+   
+  .login-page {
+    padding: 5%  0 0% ;
+    margin-top: 50px;
+    margin: 0 auto 100px;
+    max-width: 360px;
+    position: relative;
+  }
+   
+  .login-form {
+     width: 600px;
+     border-radius: 10px;
+     box-shadow: 0 0 27px 0 rgba(1, 58, 25, 0.62);
+     height: 350px;
+  }
+   
+  .login-form-header {
+     padding-top: 10px;
+  }
+   
+  .login-from-row {
+     padding-top: 16px;
+     padding-bottom: 16px;
+  }
+   
+  .login-form-font-header {
+     font-size:20px; 
+     margin: 0;
+     color: #006b1d;
+     font-weight: bold;
+  }
+ 
+  .login-form-font-subtitle {
+    font-size:13px; 
+    margin: 0;
+    color: #006b1d;
+    font-weight: bold;
+ }
+ 
+ .icono-user{
+    margin-bottom: 5px;
+    height: 40px;
+    width: 40px;
+ }
+ 
+ .icono-lock{
+    margin-bottom: 5px;
+    height: 40px;
+    width: 40px;
+ }
+ 
+ .input-login{
+    border: none;
+    border-radius: 10px;
+    background: #BDC3C7;
+    height: 40px;
+    width: 80%;
+    color: #006b1d;
+ }
+ 
+ 
+ .btn-ingresar{
+    background: #006b1d;
+    color: #fff;
+ }
+ 
+ .btn-ingresar:hover{
+    background: #01350f;
+    color: #fff;
+ }
+ 
+ .credito-top{
+    height: 50px;
+    margin: 0;
+    align-content: center;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    background: #006b1d;
+ }
+ 
+ .credito{
+    height: 100px;
+    margin: 0;
+    align-content: center;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    background: #006b1d;
+ }
+ 
+ .credito-admin{
+    height: 100px;
+    margin: 0;
+    align-content: center;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    background: #004212;
+ }
+ 
+ .btn-ingresar-admin{
+    background: #004212;
+    color: #fff;
+ }
+ 
+ .btn-ingresar-admin:hover{
+    background: #01350f;
+    color: #fff;
+ }
+ 
