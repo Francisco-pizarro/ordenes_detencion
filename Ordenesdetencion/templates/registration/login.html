@@ -35,7 +35,8 @@
     <div class="container contenedor-principal">
       <div class="row text-center login-page">
         <div class="col-lg-12 login-form">
-          <form action="" method="post">
+          <form method="post">
+            {% csrf_token %}
             <div class="container">
             <div class="row">
               <div class="col-md-12 login-form-header">
@@ -49,7 +50,7 @@
                 <img class="icono-user" src="{% static 'img/user.png' %}" >
               </div>
               <div class="col-md-10 login-from-row">
-              <input type="email" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="addon-wrapping" required>
+              <input type="text" class="form-control" placeholder="Email"  name="username" required>
             </div>
             </div>
             <div class="row">
@@ -57,12 +58,12 @@
                 <img class="icono-user" src="{% static 'img/lock.png' %}" >
               </div>
               <div class="col-md-10 login-from-row">
-              <input type="password" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="addon-wrapping" required>
+              <input type="password" class="form-control" placeholder="Contraseña" name="password" required>
             </div>
             </div>
             <div class="row">
               <div class="col-md-12 login-from-row">
-                <button class="btn btn-block btn-ingresar">Ingresar <i class="bi bi-box-arrow-in-right"></i></button>
+                <button class="btn btn-block btn-ingresar" type="submit">Ingresar</button>
               </div>
             </div>
             <p class="login-form-font-subtitle">Si necesitas recuperar tu acceso debes contactar al siguiente correo: correo@info.cl </p>

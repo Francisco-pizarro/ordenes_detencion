@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Persona, Orden, MedidaCautelar
-
-# Create your views here.
+from django.contrib.auth.decorators import login_required
+@login_required()
 def index(request):
     if request.method == 'POST':
         rut = request.POST.get('txtRut')
@@ -28,4 +28,4 @@ def index(request):
         return render(request, 'index.html')
 
 def login(request):
-    return render(request, 'login.html')
+    return render(request, 'registration/login.html')
