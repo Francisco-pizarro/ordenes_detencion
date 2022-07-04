@@ -12,6 +12,8 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
   <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
   <link rel="stylesheet" href="{% static '/img' %}">
@@ -54,12 +56,17 @@
 
         <div class="mt-4">
         {% block content %}
-				<form action="" id="busca" method="POST" enctype="multipart/form-data" class="form-inline my-2 my-lg-0 ">
+				<form action="" id="form-buscar" method="POST" enctype="multipart/form-data" class="form-inline my-2 my-lg-0 ">
           {% csrf_token %}
           <br>
           <input class=" form-control mr-sm-2" type="search" placeholder="Ingresar run a consultar" aria-label="Search" name="txtRut" id="txtRut">
-          <button class="btn btn-outline-light my-2 my-sm-0" type="submit" id="btn_buscar">Buscar</button>					
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit" id="btn_buscar">Buscar</button>
+          
 				</form>
+
+          {% if rutNoValido %}
+            <div class="text-bg-warning p-3">{{ rutNoValido }}</div>
+          {% endif %}
 			{% endblock %}
 		
       </div>

@@ -1,6 +1,6 @@
 {% extends 'index.html' %}
 {% load static %}
-{% block title %} resultados {% endblock %}
+{% block title %} Medidas Cautelares {% endblock %}
 
 
 {% block contenido %}
@@ -105,7 +105,7 @@
                     <td>{{cautelar.ruc}}</td>
                     <td>{{cautelar.gls_medida_cautelar}}</td>
                     <td>{{cautelar.tribunal_id_tribunal}}</td>
-                    <td>{{cautelar.resolucion}}</td>
+                    <td><a class="btn btn-light" download="{{ cautelar.ruc }}" href="data:application/pdf;base64,{{cautelar.resolucion}}" title="Descargar PDF"><i class="bi bi-file-pdf"></a></td>
                     <td></td>
                   </tr>    
                 </tbody>

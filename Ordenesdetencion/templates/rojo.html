@@ -1,6 +1,6 @@
 {% extends 'index.html' %}
 {% load static %}
-{% block title %} resultados {% endblock %}
+{% block title %} Órden de detención {% endblock %}
 
 
 {% block contenido %}
@@ -105,7 +105,7 @@
                     <td>{{orden.ruc}}</td>
                     <td>{{orden.delito_id_delito}}</td>
                     <td>{{orden.tribunal_id_tribunal}}</td>
-                    <td>{{orden.resolucion}}</td>
+                    <td><a class="btn btn-light" download="{{ orden.ruc }}" href="data:application/pdf;base64,{{orden.resolucion}}" title="Descargar PDF"><i class="bi bi-file-pdf"></a></td>
                     <td></td>
                   </tr>    
                 </tbody>

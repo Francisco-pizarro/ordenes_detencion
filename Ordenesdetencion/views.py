@@ -1,14 +1,19 @@
+
+from itertools import cycle
 from django.shortcuts import render
 from .models import Persona, Orden, MedidaCautelar
 from django.contrib.auth.decorators import login_required
+
+
+
 @login_required()
 def index(request):
     if request.method == 'POST':
         rut = request.POST.get('txtRut')
-        if rut:      
+        if validaRut(rut):      
             # 17123213-9 OD
-            # 12223432-4 MC
-            try:
+            # 12223432-0 MC
+            try:                
                 persona = Persona.objects.get(gls_rut=rut)
             except Persona.DoesNotExist:
                 return render(request, 'verde.html')           
@@ -23,9 +28,35 @@ def index(request):
                 else:
                     return render(request, 'verde.html')            
         else:
-            return render(request, 'index.html')            
+            return render(request, 'index.html',{'rutNoValido':'El RUN ingresado no es válido.'})            
     else:        
         return render(request, 'index.html')
 
 def login(request):
     return render(request, 'registration/login.html')
+
+
+
+def validaRut(rut):
+    rut = rut.upper()
+    rut = rut.replace("-","")
+    rut = rut.replace(".","")
+    aux = rut[:-1]
+    dv = rut[-1:]
+ 
+    if not aux.isnumeric():
+        return False
+    revertido = map(int, reversed(str(aux)))
+    factors = cycle(range(2,8))
+    s = sum(d * f for d, f in zip(revertido,factors))
+    res = (-s)%11
+
+    if str(res) == dv:
+        return True
+    elif dv=="K" and res==10:
+        return True
+    else:
+        return False
+
+
+
