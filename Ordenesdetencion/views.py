@@ -10,7 +10,8 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     if request.method == 'POST':
         rut = request.POST.get('txtRut')
-        if validaRut(rut):      
+        if validaRut(rut):
+            rut = rut.replace(".","")    
             # 17123213-9 OD
             # 12223432-0 MC
             try:                
