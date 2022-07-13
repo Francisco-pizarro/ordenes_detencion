@@ -12,8 +12,7 @@ def index(request):
         rut = request.POST.get('txtRut')
         if validaRut(rut):
             rut = rut.replace(".","")    
-            # 17123213-9 OD
-            # 12223432-0 MC
+            
             try:                
                 persona = Persona.objects.get(gls_rut=rut)
             except Persona.DoesNotExist:
