@@ -78,12 +78,12 @@ WSGI_APPLICATION = 'App_ordenesConfig.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'ordenesdetencion',
-        'USER': 'veterinaria',
-        'PASSWORD': 'jotes2007@',
-        'HOST': 'veterinaria.mysql.database.azure.com',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ordenes_detencion',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',  # o la IP de tu servidor de base de datos
+        'PORT': '3306',  # Puerto predeterminado de MySQL
     }
 }
 
