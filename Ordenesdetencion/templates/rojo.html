@@ -45,20 +45,20 @@
                   <th>Pais</th>
                   <th>Actividad</th>
                   <th>Estado Civil</th>
-                  <th>Genero</th>
+                  <th>Sexo</th>
 
                 </tr>
               </thead>
               <tbody>
                 
                 <tr>
-                  <td>{{ persona.fec_fecha_nacimiento}}</td>
-                  <td>{{ persona.gls_calle}} {{ persona.gls_numero_direccion}} {{ persona.gls_depto}}</td>
-                  <td>{{ persona.comuna_id_comuna}}</td>
-                  <td>{{ persona.pais_id_pais}}</td>
-                  <td>{{ persona.actividad_id_actividad}}</td>
-                  <td>{{ persona.estado_civil_id_estado_civil}}</td>
-                  <td>{{ persona.sexo_id_sexo}}</td>
+                  <td>{{ persona.fec_fecha_nacimiento }}</td>
+                  <td>{{ persona.gls_calle }} {{ persona.gls_numero_direccion }} {{ persona.gls_depto }}</td>
+                  <td>{{ persona.comuna.gls_comuna }}</td>
+                  <td>{{ persona.pais.gls_pais }}</td>
+                  <td>{{ persona.actividad.gls_actividad }}</td>
+                  <td>{{ persona.estado_civil.gls_estado_civil }}</td>
+                  <td>{{ persona.sexo.gls_sexo }}</td>
                 </tr>
                 {% endblock %}
              
@@ -103,8 +103,8 @@
                     <th scope="row">{{orden.id_orden}}</th>
                     <td>{{orden.fecha_orden}}</td>
                     <td>{{orden.ruc}}</td>
-                    <td>{{orden.delito_id_delito}}</td>
-                    <td>{{orden.tribunal_id_tribunal}}</td>
+                    <td>{{orden.delito.gls_delito}}</td>
+                    <td>{{orden.tribunal.gls_tribunal}}</td>
                     <td><a class="btn btn-light" download="{{ orden.ruc }}" href="data:application/pdf;base64,{{orden.resolucion}}" title="Descargar PDF"><i class="bi bi-file-pdf"></a></td>
                     <td></td>
                   </tr>    

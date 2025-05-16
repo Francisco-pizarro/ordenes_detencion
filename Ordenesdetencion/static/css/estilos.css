@@ -1,3 +1,7 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
 .title-busqueda{
     font-size: 35px;
     color: black;
@@ -11,7 +15,7 @@
 }
 
 .fondo-rojo{
-    background: rgb(215, 42, 46);
+    background: rgb(177, 58, 60);
     padding: 25px;
 }
 
@@ -21,7 +25,7 @@
 }
 
 .fondo-amarillo{
-    background: rgb(252,204,82);
+    background: rgb(207, 164, 55);
     padding: 25px;
 }
 
@@ -132,6 +136,7 @@ hr{
 
 .texto_rojo {
 	color: #D72A2E;
+    text-
 }
 .texto_amarillo {
 	color: #FFC43B;

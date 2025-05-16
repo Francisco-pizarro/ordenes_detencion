@@ -23,6 +23,7 @@ class Comuna(models.Model):
 
     class Meta:
         db_table = 'comuna'
+        verbose_name_plural = "Comunas"
 
 
 class Delito(models.Model):
@@ -34,6 +35,7 @@ class Delito(models.Model):
 
     class Meta:
         db_table = 'delito'
+        verbose_name_plural = "Delitos"
 
 
 class EstadoCivil(models.Model):
@@ -45,6 +47,7 @@ class EstadoCivil(models.Model):
 
     class Meta:
         db_table = 'estado_civil'
+        verbose_name_plural = "Estado Civil"
 
 
 class MedidaCautelar(models.Model):
@@ -61,6 +64,7 @@ class MedidaCautelar(models.Model):
 
     class Meta:
         db_table = 'medida_cautelar'
+        verbose_name_plural = "Medidas Cautelares"
 
 
 class Orden(models.Model):
@@ -77,6 +81,7 @@ class Orden(models.Model):
 
     class Meta:
         db_table = 'orden'
+        verbose_name_plural = "Ordenes"
 
 
 class Pais(models.Model):
@@ -88,6 +93,7 @@ class Pais(models.Model):
 
     class Meta:
         db_table = 'pais'
+        verbose_name_plural = "Paises"
 
 
 class Persona(models.Model):
@@ -108,6 +114,11 @@ class Persona(models.Model):
 
     class Meta:
         db_table = 'persona'
+        verbose_name_plural = "Personas"
+    
+    def __str__(self):
+        return f"{self.gls_apellido_paterno} {self.gls_apellido_materno} {self.gls_nombres}"
+
 
 
 class Region(models.Model):
@@ -120,6 +131,7 @@ class Region(models.Model):
 
     class Meta:
         db_table = 'region'
+        verbose_name_plural = "Regiones"
 
 
 class Sexo(models.Model):
@@ -131,6 +143,7 @@ class Sexo(models.Model):
 
     class Meta:
         db_table = 'sexo'
+        verbose_name_plural = "Sexo"
 
 
 class Tribunal(models.Model):
@@ -143,3 +156,4 @@ class Tribunal(models.Model):
 
     class Meta:
         db_table = 'tribunal'
+        verbose_name_plural = "Tribunales"
