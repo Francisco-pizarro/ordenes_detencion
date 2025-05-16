@@ -10,6 +10,7 @@ class Actividad(models.Model):
 
     class Meta:
         db_table = 'actividad'
+        verbose_name_plural = "Actividades"
 
 
 class Comuna(models.Model):

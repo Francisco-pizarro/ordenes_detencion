@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'App_ordenesConfig.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ordenes_detencion',
+        'NAME': 'railway',
         'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',  # o la IP de tu servidor de base de datos
-        'PORT': '3306',  # Puerto predeterminado de MySQL
+        'PASSWORD': 'GTHvArxpkHiASYWUoLfSoBAkNEwlUlEP',
+        'HOST': 'centerbeam.proxy.rlwy.net',
+        'PORT': '12810',
     }
 }
 
