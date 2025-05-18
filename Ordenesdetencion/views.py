@@ -16,7 +16,6 @@ def index(request):
             except Persona.DoesNotExist:
                 return render(request, 'verde.html')
 
-            # 👇 Cambios aquí: uso correcto de ForeignKey
             orden = Orden.objects.filter(persona_id=persona.id_persona)
             cautelar = MedidaCautelar.objects.filter(persona_id=persona.id_persona)
 
