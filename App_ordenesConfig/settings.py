@@ -9,9 +9,12 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+from django.contrib.messages import constants as message_constants
 from pathlib import Path
 from decouple import config
+import os
+
+MESSAGE_LEVEL = message_constants.DEBUG
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -60,7 +63,9 @@ ROOT_URLCONF = 'App_ordenesConfig.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'Ordenesdetencion', 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,6 +79,12 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'App_ordenesConfig.wsgi.application'
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 
 # Database
@@ -107,6 +118,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'OPTIONS': {
             'max_length': 20,
         }
+    },
+    {
+        'NAME': 'Ordenesdetencion.validators.AlphanumericPasswordValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',

@@ -70,3 +70,21 @@ def test_password_largo_20():
 def test_password_largo_21():
     with pytest.raises(ValidationError):
         validate_password("ABCDEFGHIJKL123456789") 
+        
+@pytest.mark.django_db
+def test_password_solo_numeros_rechazada():
+    with pytest.raises(ValidationError):
+        validate_password("123456789")
+
+@pytest.mark.django_db
+def test_password_solo_letras_rechazada():
+    with pytest.raises(ValidationError):
+        validate_password("abcdefghijk")
+        
+@pytest.mark.django_db
+def test_email_duplicado():
+    # Crear el primer usuario
+    Usuario.objects.create_user(email="usuario@correo.com", password="Clave1234")
+    # Intentar crear el segundo usuario con el mismo email
+    with pytest.raises(Exception):
+        Usuario.objects.create_user(email="usuario@correo.com", password="OtraClave5678")

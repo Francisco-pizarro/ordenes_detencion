@@ -29,6 +29,11 @@
   <body>
     <div class="container contenedor-principal">
       <div class="row text-center login-page">
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-danger">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
         <div class="col-lg-12 login-form">
           <form method="post">
             {% csrf_token %}
@@ -46,7 +51,8 @@
                 <img class="icono-user" src="{% static 'img/user.png' %}" >
               </div>
               <div class=" col-8 login-from-row">
-              <input type="text" class="form-control" placeholder="Email"  name="username" id="username" required>
+              <input type="text"  name="email"    placeholder="Email" class="form-control">
+              {% comment %} <input type="text" class="form-control" placeholder="Email"  name="username" id="username" required> {% endcomment %}
             </div>
             </div>
             <div class="row">
@@ -55,7 +61,7 @@
                 <img class="icono-user" src="{% static 'img/lock.png' %}" >
               </div>
               <div class="col-8 login-from-row">
-              <input type="password" class="form-control" placeholder="Contraseña" name="password" required>
+              <input type="password" name="password" placeholder="Contraseña" class="form-control">
             </div>
             </div>
             <div class="row">
@@ -64,7 +70,6 @@
               </div>
             </div>
             <p class="login-form-font-subtitle">Si necesitas recuperar tu acceso debes contactar al siguiente correo: correo@info.cl </p>
-          </div>
           </form>
         </div>
       </div>
