@@ -44,6 +44,10 @@ def validaRut(rut):
 
     if not aux.isnumeric():
         return False
+    
+    if len(set(aux)) == 1:
+        return False
+    
     revertido = map(int, reversed(str(aux)))
     factors = cycle(range(2, 8))
     s = sum(d * f for d, f in zip(revertido, factors))
