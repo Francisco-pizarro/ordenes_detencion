@@ -14,7 +14,7 @@ from Ordenesdetencion.views import validaRut
 def test_validaRut(rut, esperado):
     resultado = validaRut(rut)
     if resultado == esperado:
-        print(f"Test PASÓ → RUT: {rut} | Esperado: {esperado} | Resultado: {resultado}")
+        print(f"Test paso -> RUT: {rut} | Esperado: {esperado} | Resultado: {resultado}")
     else:
         assert False
         
