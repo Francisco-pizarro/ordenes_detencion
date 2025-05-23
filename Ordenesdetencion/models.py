@@ -7,6 +7,8 @@ class UsuarioManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
             raise ValueError("Email es obligatorio")
+        if not password:
+            raise ValueError("La contraseña es obligatoria")
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
@@ -96,10 +98,17 @@ class MedidaCautelar(models.Model):
         db_table = 'medida_cautelar'
         verbose_name_plural = "Medidas Cautelares"
 
+def validar_ruc_orden(valor):
+    try:
+        valor_int = int(valor)
+    except Exception:
+        raise ValidationError("El RUT de la orden debe ser numérico.")
+    if valor_int < 100_000_000 or valor_int > 1_000_000_000:
+        raise ValidationError("El RUT de la orden debe estar entre 100,000,000 y 1,000,000,000.")
 
 class Orden(models.Model):
     id_orden = models.AutoField(db_column='ID_ORDEN', primary_key=True)
-    ruc = models.CharField(db_column='RUC', max_length=45)
+    ruc = models.CharField(db_column='RUC', max_length=45, validators=[validar_ruc_orden])
     fecha_orden = models.DateField(db_column='FECHA_ORDEN')
     resolucion = models.TextField(db_column='RESOLUCION', blank=True, null=True)
     delito = models.ForeignKey(Delito, on_delete=models.DO_NOTHING, db_column='DELITO_ID_DELITO', related_name='ordenes')

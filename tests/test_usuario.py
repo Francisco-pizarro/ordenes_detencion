@@ -6,85 +6,70 @@ from django.contrib.auth.password_validation import validate_password
 
 Usuario = get_user_model()
 
-# Acá probamos la funcion de django create_user(), validamos si efectivamente crea un usuario segun los parametros que le mandamos
+# Tests de contraseña: límites y particiones de equivalencia
+@pytest.mark.parametrize("password,should_raise", [
+    ("A234567", True),               # 7 caracteres, debe fallar (menor al mínimo)
+    ("A2345678", False),             # 8 caracteres, válido (mínimo permitido)
+    ("A23456789", False),            # 9 caracteres, válido
+    ("ABCDEFGHIJ123456789", False),  # 19 caracteres, válido
+    ("ABCDEFGHIJK123456789", False), # 20 caracteres, válido (máximo permitido)
+    ("ABCDEFGHIJKL123456789", True), # 21 caracteres, debe fallar (mayor al máximo)
+    ("123456789", True),             # Solo números, debe fallar (no cumple seguridad)
+    ("abcdefghijk", True),           # Solo letras, debe fallar (no cumple seguridad)
+    ("", True),                      # Vacía, debe fallar
+])
+@pytest.mark.django_db
+def test_password_largos_y_formato(password, should_raise):
+    if should_raise:
+        with pytest.raises(ValidationError):
+            validate_password(password)
+    else:
+        try:
+            validate_password(password)
+        except ValidationError:
+            pytest.fail(f"Contraseña válida fue rechazada: {password}")
+
+# Tests de emails: particiones de equivalencia
+@pytest.mark.parametrize("email,should_raise", [
+    ("usuario@correo.com", False),   # Válido
+    ("correo-sin-arroba.com", True), # Sin @
+    ("usuario@.com", True),          # Dominio inválido
+    ("usuario@correo", True),        # Falta TLD
+    ("@correo.com", True),           # Falta nombre usuario
+    ("", True),                      # Vacío
+])
+def test_email_formato(email, should_raise):
+    regex = r"[^@]+@[^@]+\.[^@]+"
+    if should_raise:
+        assert not re.match(regex, email)
+    else:
+        assert re.match(regex, email)
+
+# Test de creación de usuario válido
 @pytest.mark.django_db
 def test_crear_usuario_valido():
-    user =  Usuario.objects.create_user(email="usuario@correo.com", password="Clave1234")
-    assert user.email == "usuario@correo.com" # formato email y dominio correctos
-    assert user.check_password("Clave1234") #Clave alfanumerica, de minimo 8 y maximo 20
+    user = Usuario.objects.create_user(email="usuario@correo.com", password="Clave1234")
+    assert user.email == "usuario@correo.com"
+    assert user.check_password("Clave1234")
     assert user.is_active
     assert not user.is_staff
     assert not user.is_superuser
 
-# Probar con un email de formato inválido, parametrize permite probar con diferentes valores, con esto podemos cubrir las CE de la variable email.
-#CE1 fornmato no valido
-#CE2 dominio invalido
-#EC3 variable vacia
-@pytest.mark.parametrize("email", [
-    "correo-sin-arroba.com",
-    "usuario@.com",
-    ""
-])
-def test_email_formato_invalido(email):
-    regex = r"[^@]+@[^@]+\.[^@]+"
-    assert not re.match(regex, email)
-
-#Cobertura de limites para el largo de caracteres que debe llevar la contraseña del usuario
-# Limites negativos[7,21]
-# Limites positivos[8,9,19,20]
-
-@pytest.mark.django_db
-def test_password_largo_7():
-    with pytest.raises(ValidationError):
-        validate_password("A234567")
-
-@pytest.mark.django_db
-def test_password_largo_8():
-    try:
-        validate_password("A2345678")
-    except ValidationError:
-        pytest.fail("Contraseña válida (8 caracteres) fue rechazada por un error inesperado")
-
-@pytest.mark.django_db
-def test_password_largo_9():
-    try:
-        validate_password("A23456789")
-    except ValidationError:
-        pytest.fail("Contraseña válida (9 caracteres) fue rechazada por un error inesperado" )
-
-@pytest.mark.django_db
-def test_password_largo_19():
-    try:
-        validate_password("ABCDEFGHIJ123456789")
-    except ValidationError:
-        pytest.fail("Contraseña válida (19 caracteres) fue rechazada por un error inesperado")
-
-@pytest.mark.django_db
-def test_password_largo_20():
-    try:
-        validate_password("ABCDEFGHIJK123456789")
-    except ValidationError:
-        pytest.fail("Contraseña válida (20 caracteres) fue rechazada por un error inesperado")
-
-@pytest.mark.django_db
-def test_password_largo_21():
-    with pytest.raises(ValidationError):
-        validate_password("ABCDEFGHIJKL123456789") 
-        
-@pytest.mark.django_db
-def test_password_solo_numeros_rechazada():
-    with pytest.raises(ValidationError):
-        validate_password("123456789")
-
-@pytest.mark.django_db
-def test_password_solo_letras_rechazada():
-    with pytest.raises(ValidationError):
-        validate_password("abcdefghijk")
-        
+# Test de email duplicado
 @pytest.mark.django_db
 def test_email_duplicado():
-    # Crear el primer usuario
     Usuario.objects.create_user(email="usuario@correo.com", password="Clave1234")
-    # Intentar crear el segundo usuario con el mismo email
     with pytest.raises(Exception):
         Usuario.objects.create_user(email="usuario@correo.com", password="OtraClave5678")
+
+# Test de campo email obligatorio
+@pytest.mark.django_db
+def test_email_obligatorio():
+    with pytest.raises(ValueError):
+        Usuario.objects.create_user(email="", password="Clave1234")
+
+# Test de campo password obligatorio
+@pytest.mark.django_db
+def test_password_obligatorio():
+    with pytest.raises(ValueError, match="contraseña"):
+        Usuario.objects.create_user(email="nuevo@correo.com", password=None)

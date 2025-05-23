@@ -40,7 +40,6 @@ def login_view(request):
 
         print(f"POST data - email: '{email}', password: '{password}'")
 
-        # Validar si está vacío
         if not email:
             print("ERROR: Falta email")
             messages.error(request, "El campo correo electrónico es obligatorio.")
@@ -51,7 +50,6 @@ def login_view(request):
             messages.error(request, "El campo contraseña es obligatorio.")
             return render(request, 'registration/login.html')
 
-        # Validar formato de email
         try:
             validate_email(email)
         except ValidationError:
@@ -72,12 +70,10 @@ def login_view(request):
             messages.error(request, "Su cuenta se encuentra inactiva. Contacte al administrador.")
             return render(request, 'registration/login.html')
 
-        # Login exitoso
         print("Login exitoso. Redirigiendo a index.")
         auth_login(request, user)
         return redirect('index')
 
-    # GET o cualquier otro método HTTP
     print("GET request - mostrando formulario")
     return render(request, 'registration/login.html', {'just_posted': request.method == 'POST'})
 
