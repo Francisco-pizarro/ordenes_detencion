@@ -1,5 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
+from django.core.exceptions import ValidationError
+from datetime import date
 
 class UsuarioManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -123,14 +125,18 @@ class Pais(models.Model):
         db_table = 'pais'
         verbose_name_plural = "Paises"
 
-
+def validar_fecha_nacimiento(value):
+    if value.year < 1920 or value > date.today():
+        raise ValidationError(
+            f"La fecha de nacimiento debe estar entre 1920 y {date.today().year}"
+        )
 class Persona(models.Model):
     id_persona = models.AutoField(db_column='ID_PERSONA', primary_key=True)
     gls_rut = models.CharField(db_column='GLS_RUT', max_length=50)
     gls_apellido_paterno = models.CharField(db_column='GLS_APELLIDO_PATERNO', max_length=50)
     gls_apellido_materno = models.CharField(db_column='GLS_APELLIDO_MATERNO', max_length=50)
     gls_nombres = models.CharField(db_column='GLS_NOMBRES', max_length=50)
-    fec_fecha_nacimiento = models.DateField(db_column='FEC_FECHA_NACIMIENTO')
+    fec_fecha_nacimiento = models.DateField(validators=[validar_fecha_nacimiento])
     gls_depto = models.CharField(db_column='GLS_DEPTO', max_length=50, blank=True, null=True)
     gls_calle = models.CharField(db_column='GLS_CALLE', max_length=50, blank=True, null=True)
     gls_numero_direccion = models.CharField(db_column='GLS_NUMERO_DIRECCION', max_length=50, blank=True, null=True)
@@ -146,8 +152,6 @@ class Persona(models.Model):
     
     def __str__(self):
         return f"{self.gls_apellido_paterno} {self.gls_apellido_materno} {self.gls_nombres}"
-
-
 
 class Region(models.Model):
     id_region = models.AutoField(db_column='ID_REGION', primary_key=True)

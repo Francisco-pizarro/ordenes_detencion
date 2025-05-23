@@ -20,7 +20,7 @@ def test_busqueda_por_rut(client, con_orden, con_cautelar, template_esperado):
     )
 
     # Intentar login con email y password
-    logged_in = client.login(email='testuser@example.com', password='testpass')
+    logged_in = client.login(email='test@test.com', password='12345678')
     assert logged_in, "Error Login"
 
     rut = '17.937.114-6'  # RUT con guion y sin puntos
