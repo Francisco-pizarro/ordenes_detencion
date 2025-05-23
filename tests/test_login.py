@@ -10,7 +10,7 @@ def test_login_exitoso(client):
     response = client.post(reverse('login'), {'email': 'usuario@correo.com', 'password': 'Clave1234'})
     print("STATUS CODE:", response.status_code)
     print("URL:", response.url if hasattr(response, "url") else "NO URL")
-    print("CONTENT:", response.content.decode())
+    print(response.content.decode())
     assert response.status_code == 302
     assert response.url == reverse('index')
 

@@ -38,11 +38,16 @@ def login_view(request):
         email = request.POST.get('email', '').strip()
         password = request.POST.get('password', '').strip()
 
+        print(f"POST data - email: '{email}', password: '{password}'")
+
         # Validar si está vacío
         if not email:
+            print("ERROR: Falta email")
             messages.error(request, "El campo correo electrónico es obligatorio.")
             return render(request, 'registration/login.html')
+
         if not password:
+            print("ERROR: Falta contraseña")
             messages.error(request, "El campo contraseña es obligatorio.")
             return render(request, 'registration/login.html')
 
@@ -50,22 +55,32 @@ def login_view(request):
         try:
             validate_email(email)
         except ValidationError:
+            print("ERROR: Email inválido")
             messages.error(request, "Debe ingresar un correo electrónico válido.")
             return render(request, 'registration/login.html')
 
         user = authenticate(request, email=email, password=password)
+        print(f"Usuario autenticado: {user}")
+
         if user is None:
+            print("ERROR: Credenciales incorrectas")
             messages.error(request, "Correo electrónico o contraseña incorrectos.")
             return render(request, 'registration/login.html')
 
         if not user.is_active:
+            print("ERROR: Usuario inactivo")
             messages.error(request, "Su cuenta se encuentra inactiva. Contacte al administrador.")
             return render(request, 'registration/login.html')
 
-        # Login exitoso:
+        # Login exitoso
+        print("Login exitoso. Redirigiendo a index.")
         auth_login(request, user)
         return redirect('index')
+
+    # GET o cualquier otro método HTTP
+    print("GET request - mostrando formulario")
     return render(request, 'registration/login.html', {'just_posted': request.method == 'POST'})
+
 
 @login_required
 def index(request):
