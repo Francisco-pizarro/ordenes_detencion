@@ -13,15 +13,15 @@ User = get_user_model()
     (False, False, 'verde.html'),
 ])
 def test_busqueda_por_rut(client, con_orden, con_cautelar, template_esperado):
-    # Crear usuario usando email, que es el USERNAME_FIELD
-    user = User.objects.create_user(
-        email='testuser@example.com',
-        password='testpass'
+    # Crear usuario usando email
+    User.objects.create_user(
+        email='test@test.com',
+        password='12345678'
     )
 
     # Intentar login con email y password
     logged_in = client.login(email='testuser@example.com', password='testpass')
-    assert logged_in, "Error al hacer login en el test"
+    assert logged_in, "Error Login"
 
     rut = '17.937.114-6'  # RUT con guion y sin puntos
     rut_limpio = rut.replace(".", "")
@@ -34,7 +34,7 @@ def test_busqueda_por_rut(client, con_orden, con_cautelar, template_esperado):
     estado_civil = EstadoCivil.objects.create(gls_estado_civil="Soltero")
     sexo = Sexo.objects.create(gls_sexo="Masculino")
 
-    # Crear Persona
+
     persona = Persona.objects.create(
         gls_rut=rut_limpio,
         gls_apellido_paterno="Perez",
