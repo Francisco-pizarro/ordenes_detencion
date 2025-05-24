@@ -11,18 +11,18 @@ def test_logout_protege_index(client):
     password = '12345678'
     User.objects.create_user(email=email, password=password)
 
-    # Simular login (sin pasar por view login)
-    assert client.login(email=email, password=password)
+    # Simular login (sin pasar por view login)                   
+    assert client.login(email=email, password=password)  
 
-    # Acceder a la vista protegida
-    response = client.get('/')         # Acceso permitido a vista protegida si logueado	es=	response.status_code == 200 
+    # Acceder a la vista protegida        
+    response = client.get('/')        
     assert response.status_code == 200
 
-    # Hacer logout manualmente
-    client.logout() #Autenticación	Usuario deslogueado	Inválido	Logout manual
+    # Hacer logout manualmente      
+    client.logout() #           
 
     # Intentar acceder nuevamente
     response = client.get('/')
     assert response.status_code == 302
-    assert '/login' in response.url  # Vista protegida	Redirección si no hay sesión , Redirección	response.status_code == 302
+    assert '/login' in response.url 
 
