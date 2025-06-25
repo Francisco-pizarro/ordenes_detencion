@@ -26,3 +26,7 @@ class AlphanumericPasswordValidator:
 
     def get_help_text(self):
         return _("La contraseña debe contener letras y números.")
+    
+    
+    
+

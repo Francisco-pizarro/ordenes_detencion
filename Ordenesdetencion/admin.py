@@ -23,13 +23,13 @@ class UsuarioAdmin(UserAdmin):
     ordering = ('email',)
     search_fields = ('email',)
     fieldsets = (
-        (None, {'fields': ('email', 'password')}),
+        (None, {'fields': ('email', 'password', 'first_name','last_name' )}),
         ('Permisos', {'fields': ('is_staff', 'is_active', 'is_superuser', 'groups', 'user_permissions')}),
     )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'password1', 'password2', 'is_staff', 'is_active')}
+            'fields': ('email','first_name', 'last_name','password1', 'password2', 'is_staff', 'is_active')}
         ),
     )
 

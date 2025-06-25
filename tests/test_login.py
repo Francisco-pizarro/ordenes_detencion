@@ -1,53 +1,42 @@
+# tests/test_login.py
+
 import pytest
-from django.urls import reverse
 from django.contrib.auth import get_user_model
+from Ordenesdetencion.services import validar_login
 
 Usuario = get_user_model()
 
 @pytest.mark.django_db
-def test_login_exitoso(client):
-    Usuario.objects.create_user(email="usuario@correo.com", password="Clave1234")
-    response = client.post(reverse('login'), {'email': 'usuario@correo.com', 'password': 'Clave1234'})
-    print("STATUS CODE:", response.status_code)
-    print("URL:", response.url if hasattr(response, "url") else "NO URL")
-    print(response.content.decode())
-    assert response.status_code == 302
-    assert response.url == reverse('index')
+def test_login_exitoso():
+    Usuario.objects.create_user(email="test@test.cl", password="Clave123")
+    assert validar_login("test@test.cl", "Clave123") == "Login exitoso"
 
 @pytest.mark.django_db
-def test_login_email_vacio(client):
-    response = client.post(reverse('login'), {'email': '', 'password': 'Clave1234'}, follow=True)
-    print(response.content.decode())
-    assert "El campo correo electrónico es obligatorio." in response.content.decode()
+def test_login_usuario_inactivo():
+    Usuario.objects.create_user(email="test@test.cl", password="Clave123", is_active=False)
+    assert validar_login("test@test.cl", "Clave123") == "Su cuenta se encuentra inactiva. Contacte al administrador."
+
+def test_login_email_vacio():
+    assert validar_login("", "Clave123") == "El campo correo electrónico es obligatorio"
+
+def test_login_password_vacia():
+    assert validar_login("test@test.cl", "") == "El campo contraseña es obligatorio"
+
+def test_login_email_mal_formado():
+    assert validar_login("bad@@email", "Clave123") == "Debe ingresar un correo electrónico válido"
+
+def test_login_password_invalida_larga():
+    password = "Clave12345678901234567890"
+    assert validar_login("test@test.cl", password) == "La contraseña no puede tener más de 20 caracteres."
+
+def test_login_password_sin_numeros():
+    assert validar_login("test@test.cl", "mmmmmmmmm") == "La contraseña debe contener letras y números."
 
 @pytest.mark.django_db
-def test_login_password_vacia(client):
-    response = client.post(reverse('login'), {'email': 'usuario@correo.com', 'password': ''}, follow=True)
-    print(response.content.decode())
-    assert "El campo contraseña es obligatorio." in response.content.decode()
+def test_login_usuario_no_existe():
+    assert validar_login("noexiste@test.cl", "Clave123") == "Correo electrónico o contraseña incorrectos"
 
 @pytest.mark.django_db
-def test_login_email_invalido(client):
-    response = client.post(reverse('login'), {'email': 'correo-invalido', 'password': 'Clave1234'}, follow=True)
-    print(response.content.decode())
-    assert "Debe ingresar un correo electrónico válido." in response.content.decode()
-
-@pytest.mark.django_db
-def test_login_credenciales_incorrectas(client):
-    Usuario.objects.create_user(email="usuario@correo.com", password="Clave1234")
-    response = client.post(reverse('login'), {'email': 'usuario@correo.com', 'password': 'claveIncorrecta'}, follow=True)
-    print(response.content.decode())
-    assert "Correo electrónico o contraseña incorrectos." in response.content.decode()
-
-@pytest.mark.django_db
-def test_login_usuario_inactivo(client):
-    user = Usuario.objects.create_user(email="usuario@correo.com", password="Clave1234", is_active=False)
-    response = client.post(reverse('login'), {'email': 'usuario@correo.com', 'password': 'Clave1234'}, follow=True)
-    print(response.content.decode())
-    assert "Su cuenta se encuentra inactiva. Contacte al administrador." in response.content.decode()
-
-@pytest.mark.django_db
-def test_login_email_no_registrado(client):
-    response = client.post(reverse('login'), {'email': 'noexiste@correo.com', 'password': 'Clave1234'}, follow=True)
-    print(response.content.decode())
-    assert "Correo electrónico o contraseña incorrectos." in response.content.decode()
+def test_login_password_incorrecta():
+    Usuario.objects.create_user(email="test@test.cl", password="Clave123")
+    assert validar_login("test@test.cl", "Clave12344") == "Correo electrónico o contraseña incorrectos"
