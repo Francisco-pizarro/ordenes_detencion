@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 
 Usuario = get_user_model()
 
-#debemos crear un usuario para simular si entrada al sistema.
+
 @pytest.mark.django_db
 def test_login_usuario_valido_activo(client):
     Usuario.objects.create_user(email="test@test.cl", password="Clave123")

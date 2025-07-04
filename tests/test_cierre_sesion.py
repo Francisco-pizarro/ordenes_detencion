@@ -18,5 +18,5 @@ def test_logout_y_redirecciona_a_login(client):
 
     # Accede nuevamente a la misma vista
     response = client.get('/')
-    assert response.status_code == 302  # redirige
-    assert '/login' in response.url     # verifica redirección a login
+    assert response.status_code == 302  
+    assert '/login' in response.url  
